@@ -1,0 +1,35 @@
+{
+  "name": "spectre-react-components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/lib.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomn/spectre-react-components.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomn/spectre-react-components/issues"
+  },
+  "homepage": "https://github.com/thomn/spectre-react-components#readme",
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "prop-types": "latest",
+    "rollup": "^1.21.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-babel-minify": "^9.1.0"
+  },
+  "peerDependencies": {
+    "react": "latest",
+    "react-dom": "latest",
+    "spectre.css": "latest"
+  }
+}
