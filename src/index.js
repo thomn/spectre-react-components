@@ -1,4 +1,6 @@
 import Button from './components/Button.jsx';
+import Container from './components/Container.jsx';
+import Icon from './components/Icon.jsx';
 
 /**
  * User: Oleg Kamlowski <oleg.kamlowski@thomann.de>
@@ -7,4 +9,6 @@ import Button from './components/Button.jsx';
  */
 export {
     Button,
+    Container,
+    Icon,
 };

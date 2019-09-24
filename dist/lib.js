@@ -6,4 +6,9 @@ import React from"react";import PropTypes from"prop-types";function _definePrope
  *
  * @param props
  * @returns {emptyFunctionThatReturnsNull}
- */Button.Size={LARGE:"lg",SMALL:"sm"},Button.propTypes={active:PropTypes.bool,disabled:PropTypes.bool,primary:PropTypes.bool,success:PropTypes.bool,error:PropTypes.bool,size:oneOf(Button.Size)};export{Button};
+ */Button.Size={LARGE:"lg",SMALL:"sm"},Button.propTypes={active:PropTypes.bool,disabled:PropTypes.bool,primary:PropTypes.bool,success:PropTypes.bool,error:PropTypes.bool,size:oneOf(Button.Size)};/**
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */var Container=function(a){var b=a.className,c=a.children,d=a.size,e=_objectWithoutProperties(a,["className","children","size"]);return b=composer(b,"container",_defineProperty({},"grid-"+d,d)),React.createElement("div",_extends({className:b},e),c)};Container.Size={EXTRA_LARGE:"xl",LARGE:"lg",MEDIUM:"md",SMALL:"sm",EXTRA_SMALL:"xs"},Container.propTypes={size:oneOf(Container.Size)};export{Button,Container};
