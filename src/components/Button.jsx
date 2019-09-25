@@ -1,45 +1,23 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import useClassName from '../hooks/useClassName';
-import {oneOf} from '../utils';
+import {oneOf} from 'utils';
+import factory from 'factory';
 
 /**
  *
- * @param props
- * @returns {*}
- * @constructor
+ * @type {*}
  */
-const Button = (props) => {
-    let {
-        className,
-        children,
-        active,
-        disabled,
-        primary,
-        success,
-        error,
-        size,
-        ..._
-    } = props;
-
-    className = useClassName(className, 'btn', {
+const Button = factory({
+    type: 'button',
+    className: 'btn',
+    style: ({active, disabled, size, primary, success, error}) => ({
         active,
         disabled,
         ['btn-' + size]: (size),
         ['btn-primary']: (primary),
         ['btn-success']: (success),
         ['btn-error']: (error),
-    });
-
-    return (
-        <button
-            className={className}
-            {..._}
-        >
-            {children}
-        </button>
-    );
-};
+    }),
+});
 
 Button.Size = {
     LARGE: 'lg',

@@ -1,33 +1,18 @@
-import React from 'react';
-import useClassName from '../hooks/useClassName';
-import {oneOf} from '../utils';
+import {oneOf} from 'utils';
+import factory from 'factory';
 
 /**
  *
- * @param props
- * @returns {*}
- * @constructor
+ * @type {*}
  */
-const Icon = (props) => {
-    let {
-        className,
-        size,
-        type,
-        ..._
-    } = props;
-
-    className = useClassName(className, 'icon', {
+const Icon = factory({
+    type: 'i',
+    className: 'icon',
+    style: ({size, type}) => ({
         ['icon-' + size]: (size),
         ['icon-' + type]: (type),
-    });
-
-    return (
-        <i
-            className={className}
-            {..._}
-        />
-    );
-};
+    }),
+});
 
 Icon.Size = {
     BIG: '2x',

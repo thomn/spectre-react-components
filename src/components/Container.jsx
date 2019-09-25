@@ -1,34 +1,17 @@
-import React from 'react';
-import useClassName from '../hooks/useClassName';
-import {oneOf} from '../utils';
+import {oneOf} from 'utils';
+import factory from 'factory';
 
 /**
  *
- * @param props
- * @returns {*}
- * @constructor
+ * @type {*}
  */
-const Container = (props) => {
-    let {
-        className,
-        children,
-        size,
-        ..._
-    } = props;
-
-    className = useClassName(className, 'container', {
+const Container = factory({
+    type: 'div',
+    className: 'container',
+    style: ({size}) => ({
         ['grid-' + size]: (size),
-    });
-
-    return (
-        <div
-            className={className}
-            {..._}
-        >
-            {children}
-        </div>
-    );
-};
+    }),
+});
 
 Container.Size = {
     EXTRA_LARGE: 'xl',
