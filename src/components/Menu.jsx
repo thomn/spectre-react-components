@@ -17,7 +17,7 @@ const Menu = factory({
  * @returns {*}
  * @constructor
  */
-const Divider = factory({
+export const Divider = factory({
     type: 'li',
     className: 'divider',
     modifier: ({children}) => ({
@@ -31,7 +31,7 @@ const Divider = factory({
  * @returns {*}
  * @constructor
  */
-const Item = factory({
+export const Item = factory({
     type: 'li',
     className: 'menu-item',
 });
@@ -42,7 +42,7 @@ const Item = factory({
  * @returns {*}
  * @constructor
  */
-const Badge = factory({
+export const Badge = factory({
     type: 'div',
     className: 'menu-badge',
 });

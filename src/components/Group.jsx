@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
+import Button from './Button';
 import factory from 'factory';
 import {every} from 'utils';
-import Button from './Button';
 
 /**
  *

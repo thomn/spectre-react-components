@@ -1,5 +1,5 @@
-import {oneOf} from 'utils';
 import factory from 'factory';
+import {oneOf} from 'utils';
 
 /**
  *

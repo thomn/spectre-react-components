@@ -13,7 +13,7 @@ const Breadcrumb = factory({
  *
  * @type {*}
  */
-const Item = factory({
+export const Item = factory({
     type: 'li',
     className: 'breadcrumb-item',
 });

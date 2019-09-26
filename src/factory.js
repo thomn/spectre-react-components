@@ -13,23 +13,17 @@ const through = (props) => (props || {});
  * @param fn
  * @param props
  * @param keys
- * @param exclude
  * @returns {any}
  */
-const proxy = (fn, props, keys, exclude) => {
-    const handler = {
+const proxy = (fn, props, keys) => fn(
+    new Proxy(props, {
         get(target, key, receiver) {
-            if (!exclude.includes(key)) {
-                keys.push(key);
-            }
+            keys.push(key);
 
             return Reflect.get(target, key, receiver);
         },
-    };
-    return fn(
-        new Proxy(props, handler),
-    );
-};
+    }),
+);
 
 /**
  *
@@ -40,35 +34,33 @@ const proxy = (fn, props, keys, exclude) => {
  * @param modifier
  * @returns {*}
  */
-const factory = ({type, className: baseClass, style, exclude = ['children'], modifier = through}) => {
+const factory = ({type, className: baseClass, style, modifier = through}) => {
     const keys = [];
 
     return (props) => {
-        let {className} = props;
+        let {className, children, ...rest} = props;
 
         className = useClassName(
             className,
             baseClass,
-            style && proxy(style, props, keys, exclude),
+            style && proxy(style, props, keys),
         );
 
         const nullify = keys.reduce((acc, key) => (
             (acc[key] = undefined) || acc
         ), {});
 
-        // styleProps are nullified
         props = {
-            ...props,
+            ...rest,
+            ...modifier(rest),
             ...nullify,
+            className
         };
 
         return createElement(
             type,
-            {
-                ...props,
-                ...modifier(props),
-                className,
-            },
+            props,
+            children
         );
     };
 };

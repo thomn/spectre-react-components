@@ -31,12 +31,10 @@ Avatar.propTypes = {
  *
  * @type {*}
  */
-const Presence = factory({
+export const Presence = factory({
     type: 'i',
     className: 'avatar-presence',
-    style: ({presence}) => ({
-        presence,
-    }),
+    style: ({presence}) => (presence),
 });
 
 Presence.Presence = {
@@ -44,6 +42,10 @@ Presence.Presence = {
     BUSY: 'busy',
     AWAY: 'away',
     OFFLINE: 'offline',
+};
+
+Presence.propTypes = {
+    presence: oneOf(Presence.Presence),
 };
 
 Avatar.Presence = Presence;

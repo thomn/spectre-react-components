@@ -9,6 +9,8 @@ export {default as Avatar} from 'components/Avatar';
 export {default as Breadcrumb} from 'components/Breadcrumb';
 export {default as Button} from 'components/Button';
 export {default as ButtonGroup} from 'components/ButtonGroup';
+export {default as Card} from 'components/Card';
+export {default as Chip} from 'components/Chip';
 export {default as Container} from 'components/Container';
 export {default as Group} from 'components/Group';
 export {default as Icon} from 'components/Icon';
