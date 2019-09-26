@@ -10,3 +10,13 @@ export const oneOf = (props) => (
         Object.keys(props).map(key => props[key]),
     )
 );
+
+/**
+ *
+ * @param children
+ * @param Component
+ * @returns {*|boolean}
+ */
+export const every = (children, Component) => (
+    children.every(({type}) => Component === type)
+);
