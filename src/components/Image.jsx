@@ -1,4 +1,5 @@
 import factory from 'factory';
+import {string} from 'propTypes';
 
 /**
  *
@@ -10,7 +11,7 @@ const Image = factory({
 });
 
 Image.propTypes = {
-    src: PropTypes.string.isRequired,
+    src: string.isRequired,
 };
 
 /**

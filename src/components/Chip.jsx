@@ -1,6 +1,5 @@
-import PropTypes from 'prop-types'
 import factory from 'factory';
-import {oneOf} from 'utils';
+import {oneOfOption, bool} from 'propTypes';
 
 /**
  *
@@ -10,7 +9,7 @@ const Chip = factory({
     type: 'div',
     className: 'chip',
     style: ({size, active}) => ({
-        ['chip-' + size]: (size),
+        [`chip-${size}`]: (size),
         active,
     }),
 });
@@ -20,8 +19,8 @@ Chip.Size = {
 };
 
 Chip.propTypes = {
-    active: PropTypes.bool,
-    size: oneOf(Chip.Size),
+    active: bool,
+    size: oneOfOption(Chip.Size),
 };
 
 /**

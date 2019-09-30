@@ -1,5 +1,5 @@
 import factory from 'factory';
-import {oneOf} from 'utils';
+import {oneOfOption} from 'propTypes';
 
 /**
  *
@@ -9,7 +9,7 @@ const Container = factory({
     type: 'div',
     className: 'container',
     style: ({size}) => ({
-        ['grid-' + size]: (size),
+        [`grid-${size}`]: (size),
     }),
 });
 
@@ -22,7 +22,7 @@ Container.Size = {
 };
 
 Container.propTypes = {
-    size: oneOf(Container.Size),
+    size: oneOfOption(Container.Size),
 };
 
 /**

@@ -1,5 +1,5 @@
 import factory from 'factory';
-import {oneOf} from 'utils';
+import {oneOfOption} from 'propTypes';
 
 /**
  *
@@ -9,8 +9,8 @@ const Icon = factory({
     type: 'i',
     className: 'icon',
     style: ({size, type}) => ({
-        ['icon-' + size]: (size),
-        ['icon-' + type]: (type),
+        [`icon-${size}`]: (size),
+        [`icon-${type}`]: (type),
     }),
 });
 
@@ -62,8 +62,8 @@ Icon.Type = {
 };
 
 Icon.propTypes = {
-    size: oneOf(Icon.Size),
-    type: oneOf(Icon.Type).isRequired,
+    size: oneOfOption(Icon.Size),
+    type: oneOfOption(Icon.Type).isRequired,
 };
 
 /**

@@ -1,5 +1,5 @@
 import factory from 'factory';
-import {oneOf} from 'utils';
+import {oneOfOption,  string} from 'propTypes';
 
 /**
  *
@@ -9,9 +9,9 @@ const Avatar = factory({
     type: 'figure',
     className: 'avatar',
     style: ({size}) => ({
-        ['avatar-' + size]: (size),
+        [`avatar-${size}`]: (size),
     }),
-    modifier: ({initials}) => ({
+    rewire: ({initials}) => ({
         'data-initial': initials,
     }),
 });
@@ -24,7 +24,8 @@ Avatar.Size = {
 };
 
 Avatar.propTypes = {
-    size: oneOf(Avatar.Size),
+    size: oneOfOption(Avatar.Size),
+    initials: string,
 };
 
 /**
@@ -45,7 +46,7 @@ Presence.Presence = {
 };
 
 Presence.propTypes = {
-    presence: oneOf(Presence.Presence),
+    presence: oneOfOption(Presence.Presence),
 };
 
 Avatar.Presence = Presence;

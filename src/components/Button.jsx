@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
 import factory from 'factory';
-import {oneOf} from 'utils';
+import {oneOfOption, bool} from 'propTypes';
+import React from 'react';
 
 /**
  *
@@ -12,25 +12,26 @@ const Button = factory({
     style: ({active, disabled, size, primary, success, error}) => ({
         active,
         disabled,
-        ['btn-' + size]: (size),
-        ['btn-primary']: (primary),
-        ['btn-success']: (success),
-        ['btn-error']: (error),
+        [`btn-${size}`]: (size),
+        'btn-primary': (primary),
+        'btn-success': (success),
+        'btn-error': (error),
     }),
 });
 
 Button.Size = {
     LARGE: 'lg',
+    MEDIUM: null,
     SMALL: 'sm',
 };
 
 Button.propTypes = {
-    active: PropTypes.bool,
-    disabled: PropTypes.bool,
-    primary: PropTypes.bool,
-    success: PropTypes.bool,
-    error: PropTypes.bool,
-    size: oneOf(Button.Size)
+    active: bool,
+    disabled: bool,
+    primary: bool,
+    success: bool,
+    error: bool,
+    size: oneOfOption(Button.Size),
 };
 
 /**

@@ -6,7 +6,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook"
   },
   "files": [
     "dist"
@@ -22,9 +23,12 @@
   },
   "homepage": "https://github.com/thomn/spectre-react-components#readme",
   "devDependencies": {
-    "@babel/core": "^7.6.0",
+    "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-knobs": "^5.2.1",
+    "@storybook/react": "^5.2.1",
+    "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^3.2.0",
     "prop-types": "latest",
     "rollup": "^1.21.4",
@@ -33,11 +37,9 @@
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-node-resolve": "^5.2.0"
   },
-  "dependencies": {
-    "spectre.css": "latest"
-  },
   "peerDependencies": {
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "spectre.css": "latest"
   }
 }

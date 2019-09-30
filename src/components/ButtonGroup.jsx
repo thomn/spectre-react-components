@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import factory from 'factory';
+import {bool} from 'propTypes';
 
 /**
  *
@@ -14,7 +14,7 @@ const ButtonGroup = factory({
 });
 
 ButtonGroup.propTypes = {
-    block: PropTypes.bool,
+    block: bool,
 };
 
 /**

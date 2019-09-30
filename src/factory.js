@@ -1,12 +1,5 @@
-import {createElement} from 'react';
+import {createElement, forwardRef} from 'react';
 import {useClassName} from 'hooks';
-
-/**
- *
- * @param props
- * @returns {*|{}}
- */
-const through = (props) => (props || {});
 
 /**
  *
@@ -31,38 +24,42 @@ const proxy = (fn, props, keys) => fn(
  * @param baseClass
  * @param style
  * @param exclude
- * @param modifier
+ * @param rewire
  * @returns {*}
  */
-const factory = ({type, className: baseClass, style, modifier = through}) => {
-    const keys = [];
+const factory = ({type, className: baseClass, style, rewire = (props) => (props || {}) , wrap = (children) => (children)}) => {
+    return forwardRef((props, ref) => {
+        const keys = [];
 
-    return (props) => {
-        let {className, children, ...rest} = props;
+        let {className, children} = props;
+        const classes = style && proxy(style, props, keys);
+        const rewired = rewire && proxy(rewire, props, keys);
 
         className = useClassName(
-            className,
             baseClass,
-            style && proxy(style, props, keys),
+            classes,
+            className,
         );
+
+        children = wrap(children, props);
 
         const nullify = keys.reduce((acc, key) => (
             (acc[key] = undefined) || acc
         ), {});
 
         props = {
-            ...rest,
-            ...modifier(rest),
+            ...rewired,
+            children,
             ...nullify,
-            className
+            ref,
+            className,
         };
 
         return createElement(
             type,
             props,
-            children
         );
-    };
+    });
 };
 
 /**
