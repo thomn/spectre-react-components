@@ -1,10 +1,32 @@
 import factory from 'factory';
+import {oneOfOption} from 'propTypes';
 
+/**
+ *
+ * @type {*}
+ */
 const Hero = factory({
     type: 'div',
     className: 'hero',
+    style: ({size}) => ({
+        [`hero-${size}`]: (size),
+    }),
 });
 
+Hero.Size = {
+    LARGE: 'lg',
+    MEDIUM: null,
+    SMALL: 'sm',
+};
+
+Hero.propTypes = {
+    size: oneOfOption(Hero.Size),
+};
+
+/**
+ *
+ * @type {*}
+ */
 export const Body = factory({
     type: 'div',
     className: 'hero-body',
