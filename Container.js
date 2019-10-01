@@ -1,0 +1,1 @@
+import"react";import{f as factory,o as oneOfOption}from"./vendor.js";import"prop-types";const Container=factory({type:"div",className:"container",style:({size:a})=>({[`grid-${a}`]:a})});Container.Size={EXTRA_LARGE:"xl",LARGE:"lg",MEDIUM:"md",SMALL:"sm",EXTRA_SMALL:"xs"},Container.propTypes={size:oneOfOption(Container.Size)};export default Container;

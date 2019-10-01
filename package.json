@@ -2,15 +2,15 @@
   "name": "spectre-react-components",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/lib.js",
+  "main": "index.js",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "build": "rollup -c rollup/rollup.config.js",
+    "dev": "rollup -c -c rollup/rollup.config.js -w",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook"
   },
   "files": [
-    "dist"
+    "*.js"
   ],
   "repository": {
     "type": "git",
