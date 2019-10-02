@@ -5,7 +5,7 @@ import useClassName from './useClassName';
  * Date: 25.09.2019
  * Time: 11:18
  */
-export default (tooltip, className = '') => ({
+export default (tooltip) => ({className}) => ({
     className: useClassName(className, 'tooltip'),
     'data-tooltip': tooltip,
 });

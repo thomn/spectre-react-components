@@ -35,7 +35,9 @@
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-babel-minify": "^9.1.0",
     "rollup-plugin-cleanup": "^3.1.1",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "react": "latest",
+    "spectre.css": "latest"
   },
   "peerDependencies": {
     "react": "latest",

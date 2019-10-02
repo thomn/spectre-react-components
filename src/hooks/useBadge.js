@@ -5,7 +5,7 @@ import useClassName from './useClassName';
  * Date: 29.09.2019
  * Time: 02:39
  */
-export default (badge, className = '') => ({
+export default (badge) => ({className}) => ({
     className: useClassName(className, 'badge'),
     'data-badge': badge,
 });

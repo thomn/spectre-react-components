@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import {Accordion, Avatar, Menu, hooks} from '../../src';
 import {Presence} from '../../src/components/Avatar';
 import {boolean, select, text} from '../addons';
-
+import Dropdown, {Option} from '../../src/components/Dropdown';
 
 export default {
     title: 'Components',
@@ -41,4 +41,15 @@ export const menu = () => (
             Divider
         </Menu.Divider>
     </Menu>
+);
+
+export const dropdown = () => (
+    <Dropdown onClick={(e) => console.info(e)}>
+        <Option>
+            <a href="#dropdowns">Slack</a>
+        </Option>
+        <Option>
+            <a href="#dropdowns">a</a>
+        </Option>
+    </Dropdown>
 );
