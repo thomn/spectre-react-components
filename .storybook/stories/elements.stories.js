@@ -1,7 +1,9 @@
 import React from 'react';
 import {Button, hooks, Label} from '../../src';
 import {boolean, select, text} from '../addons';
-const {useBadge} = hooks;
+import {useUtility, useBadge, useLoading} from '../../src/hooks';
+
+const {Text} = useUtility;
 
 export default {
     title: 'Elements',
@@ -16,7 +18,11 @@ export const button = () => (
         error={boolean('error', false)}
         success={boolean('success', false)}
         children={text('text', 'Button')}
-        {...useBadge(text('badge', ''))}
+        use={[
+            useBadge(text('badge', '')),
+            useUtility(select('utility', Text, Text.NORMAL)),
+            useLoading(boolean('loading', false))
+        ]}
     />
 );
 

@@ -29,9 +29,9 @@ const proxy = (fn, props, keys) => fn(
  */
 const factory = ({type, className: baseClass, style, rewire = (props) => (props || {}) , wrap = (children) => (children)}) => {
     return forwardRef((props, ref) => {
-        const keys = [];
+        const keys = ['use'];
 
-        let {className, children} = props;
+        let {className, children, use = []} = props;
         const classes = style && proxy(style, props, keys);
         const rewired = rewire && proxy(rewire, props, keys);
 
@@ -50,9 +50,24 @@ const factory = ({type, className: baseClass, style, rewire = (props) => (props 
         props = {
             ...rewired,
             children,
-            ...nullify,
-            ref,
             className,
+            ref,
+        };
+
+        if (use && use instanceof Function) {
+            use = [use];
+        }
+
+        for (const fn of use) {
+            props = {
+                ...props,
+                ...fn(props),
+            };
+        }
+
+        props = {
+            ...props,
+            ...nullify,
         };
 
         return createElement(

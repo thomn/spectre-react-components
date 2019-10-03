@@ -7,14 +7,12 @@ const composer = (...entries) => (
     entries
         .filter(Boolean)
         .map((value) => ({
-            [String.toString()]: () => value,
-            [Number.toString()]: () => value,
-            [Array.toString()]: () => composer(...value),
-            [Object.toString()]: () => composer(Object.keys(value)
-                .filter(key => value[key]),
-            ),
-        })[value.constructor.toString()])
-        .map(fn => fn())
+            [Boolean]: () => value,
+            [Number]: () => value,
+            [String]: () => value,
+            [Array]: () => composer(...value),
+            [Object]: () => Object.keys(value).filter(key => composer(value[key])),
+        })[value.constructor](value))
         .flat()
         .join(' ')
         .trim()
