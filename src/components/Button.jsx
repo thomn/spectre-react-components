@@ -9,13 +9,15 @@ import React from 'react';
 const Button = factory({
     type: 'button',
     className: 'btn',
-    style: ({active, disabled, size, primary, success, error}) => ({
+    style: ({active, disabled, size, primary, success, error, action, link}) => ({
         active,
         disabled,
         [`btn-${size}`]: (size),
         'btn-primary': (primary),
         'btn-success': (success),
         'btn-error': (error),
+        'btn-action': (action),
+        'btn-link': (link),
     }),
 });
 
@@ -31,6 +33,8 @@ Button.propTypes = {
     primary: bool,
     success: bool,
     error: bool,
+    action: bool,
+    link: bool,
     size: oneOfOption(Button.Size),
 };
 

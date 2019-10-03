@@ -1,5 +1,5 @@
 import React, {createContext, useContext} from 'react';
-import PropTypes from 'prop-types';
+import {object, func} from 'propTypes';
 
 /**
  */
@@ -16,7 +16,7 @@ const switched = () => {
      */
     const Switch = ({conditions, children}) => {
         Switch.propTypes = {
-            conditions: PropTypes.object.isRequired,
+            conditions: object.isRequired,
         };
 
         return (
@@ -36,7 +36,7 @@ const switched = () => {
      */
     const Case = ({children, test}) => {
         Case.propTypes = {
-            test: PropTypes.func.isRequired,
+            test: func.isRequired,
         };
 
         const conditions = useContext(Context);
