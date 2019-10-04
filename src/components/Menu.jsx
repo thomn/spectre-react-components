@@ -23,6 +23,7 @@ export const Divider = factory({
     rewire: ({children}) => ({
         'data-content': children,
     }),
+    render: () => null
 });
 
 /**

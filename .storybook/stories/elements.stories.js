@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, hooks, Label} from '../../src';
 import {boolean, select, text} from '../addons';
-import {useUtility, useBadge, useLoading} from '../../src/hooks';
+import {useUtility, useBadge, useLoading, useTooltip} from '../../src/hooks';
 
 const {Text} = useUtility;
 
@@ -21,19 +21,29 @@ export const button = () => (
         use={[
             useBadge(text('badge', '')),
             useUtility(select('utility', Text, Text.NORMAL)),
-            useLoading(boolean('loading', false))
         ]}
     />
 );
 
-export const label = () => (
-    <Label
-        primary={boolean('primary', false)}
-        secondary={boolean('secondary', false)}
-        success={boolean('success', false)}
-        warning={boolean('warning', false)}
-        error={boolean('error', false)}
-        rounded={boolean('rounded', false)}
-        children={text('text', 'Label')}
-    />
-);
+export const label = () => {
+    const showBadge = boolean('showBadge', null);
+    const showTooltip = boolean('showTooltip', null);
+
+    return (
+        <Label
+            primary={boolean('primary', false)}
+            secondary={boolean('secondary', false)}
+            success={boolean('success', false)}
+            warning={boolean('warning', false)}
+            error={boolean('error', false)}
+            rounded={boolean('rounded', false)}
+            children={text('text', 'Label')}
+            use={[
+                showBadge && useBadge(text('badge', null)),
+                showTooltip && useTooltip(text('tooltip', null)),
+                useUtility(select('utility', Text, Text.NORMAL)),
+                useLoading(boolean('loading', false)),
+            ]}
+        />
+    );
+};
