@@ -1,6 +1,22 @@
 import {createElement, forwardRef} from 'react';
 import {useClassName} from 'hooks';
 
+/**
+ *
+ * @param value
+ * @param rest
+ * @param key
+ * @returns {*}
+ */
+const remove = ({[key]: value, ...rest}, key) => rest;
+
+/**
+ *
+ * @param target
+ * @param prop
+ * @param attributes
+ * @returns {any}
+ */
 const define = (target, prop, attributes) => (
     Object.defineProperty(target, prop, attributes)
 );
@@ -8,21 +24,10 @@ const define = (target, prop, attributes) => (
 /**
  *
  * @param target
- * @param nullify
+ * @param pool
  */
-const trap = (target, nullify) => {
+const trap = (target, pool) => {
     const trapped = {};
-
-    /**
-     *
-     * @param key
-     */
-    const insert = (key) => {
-        define(nullify, key, {
-            enumerable: true,
-            value: undefined,
-        });
-    };
 
     /**
      *
@@ -30,7 +35,7 @@ const trap = (target, nullify) => {
      * @returns {*}
      */
     const spy = (prop) => () => {
-        insert(prop);
+        pool.add(prop);
 
         return target[prop];
     };
@@ -55,21 +60,18 @@ const trap = (target, nullify) => {
  * @param baseClass
  * @param style
  * @param exclude
- * @param rewire
+ * @param extend
  * @returns {*}
  */
-const factory = ({type, className: baseClass, style, rewire = (props) => (props), render = ({children}) => (children)}) => {
+const factory = ({type, className: baseClass, style, extend = (props) => (props), render = ({children}) => (children)}) => {
     return forwardRef((props, ref) => {
         let {className, use = []} = props;
 
-        const nullify = {
-            use: undefined,
-        };
-
-        const trapped = trap(props, nullify);
+        const pool = new Set(['use']);
+        const trapped = trap(props, pool);
 
         const classes = (style && style(trapped)) || null;
-        const rewired = (rewire && rewire(trapped)) || null;
+        const extended = (extend && extend(trapped)) || null;
         const children = (render && render(trapped)) || null;
 
         if (!type) {
@@ -82,10 +84,13 @@ const factory = ({type, className: baseClass, style, rewire = (props) => (props)
             className,
         );
 
-        props = {
+        const extract = [...pool].reduce(remove, {
             ...props,
-            ...rewired,
-            ...nullify,
+            ...extended,
+        });
+
+        props = {
+            ...extract,
             children,
             className,
             ref,
@@ -97,13 +102,21 @@ const factory = ({type, className: baseClass, style, rewire = (props) => (props)
             }
 
             for (const fn of use) {
-                if (typeof fn !== 'function') {
+                if (fn.type) {
+                    type = fn.type;
+
+                    continue;
+                } else if (typeof fn !== 'function') {
                     continue;
                 }
 
                 const result = fn(props);
 
                 for (const prop in result) {
+                    if (!result.hasOwnProperty(prop)) {
+                        continue;
+                    }
+
                     define(props, prop, {
                         value: result[prop],
                         enumerable: true,
