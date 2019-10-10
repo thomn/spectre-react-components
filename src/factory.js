@@ -1,22 +1,53 @@
 import {createElement, forwardRef} from 'react';
 import {useClassName} from 'hooks';
 
+const define = (target, prop, attributes) => (
+    Object.defineProperty(target, prop, attributes)
+);
+
 /**
  *
- * @param fn
- * @param props
- * @param keys
- * @returns {any}
+ * @param target
+ * @param nullify
  */
-const proxy = (fn, props, keys) => fn(
-    new Proxy(props, {
-        get(target, key, receiver) {
-            keys.push(key);
+const trap = (target, nullify) => {
+    const trapped = {};
 
-            return Reflect.get(target, key, receiver);
-        },
-    }),
-);
+    /**
+     *
+     * @param key
+     */
+    const insert = (key) => {
+        define(nullify, key, {
+            enumerable: true,
+            value: undefined,
+        });
+    };
+
+    /**
+     *
+     * @param prop
+     * @returns {*}
+     */
+    const spy = (prop) => () => {
+        insert(prop);
+
+        return target[prop];
+    };
+
+    for (const prop in target) {
+        if (!target.hasOwnProperty(prop)) {
+            continue;
+        }
+
+        define(trapped, prop, {
+            enumerable: true,
+            get: spy(prop),
+        });
+    }
+
+    return trapped;
+};
 
 /**
  *
@@ -27,13 +58,23 @@ const proxy = (fn, props, keys) => fn(
  * @param rewire
  * @returns {*}
  */
-const factory = ({type, className: baseClass, style, rewire = (props) => (props || {}) , wrap = (children) => (children)}) => {
+const factory = ({type, className: baseClass, style, rewire = (props) => (props), render = ({children}) => (children)}) => {
     return forwardRef((props, ref) => {
-        const keys = ['use'];
+        let {className, use = []} = props;
 
-        let {className, children, use = []} = props;
-        const classes = style && proxy(style, props, keys);
-        const rewired = rewire && proxy(rewire, props, keys);
+        const nullify = {
+            use: undefined,
+        };
+
+        const trapped = trap(props, nullify);
+
+        const classes = (style && style(trapped)) || null;
+        const rewired = (rewire && rewire(trapped)) || null;
+        const children = (render && render(trapped)) || null;
+
+        if (!type) {
+            return children;
+        }
 
         className = useClassName(
             baseClass,
@@ -41,34 +82,36 @@ const factory = ({type, className: baseClass, style, rewire = (props) => (props 
             className,
         );
 
-        children = wrap(children, props);
-
-        const nullify = keys.reduce((acc, key) => (
-            (acc[key] = undefined) || acc
-        ), {});
-
         props = {
+            ...props,
             ...rewired,
+            ...nullify,
             children,
             className,
             ref,
         };
 
-        if (use && use instanceof Function) {
-            use = [use];
-        }
+        if (use) {
+            if (use instanceof Function) {
+                use = [use];
+            }
 
-        for (const fn of use) {
-            props = {
-                ...props,
-                ...fn(props),
-            };
-        }
+            for (const fn of use) {
+                if (typeof fn !== 'function') {
+                    continue;
+                }
 
-        props = {
-            ...props,
-            ...nullify,
-        };
+                const result = fn(props);
+
+                for (const prop in result) {
+                    define(props, prop, {
+                        value: result[prop],
+                        enumerable: true,
+                        writeable: false,
+                    });
+                }
+            }
+        }
 
         return createElement(
             type,

@@ -14,7 +14,7 @@ export const container = () => (
 
         <Columns gapless>
             <Column>six</Column>
-            <Column auto>six</Column>
+            {/*<Column auto>six</Column>*/}
         </Columns>
     </Container>
 );

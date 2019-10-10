@@ -44,12 +44,14 @@ export const menu = () => (
 );
 
 export const dropdown = () => (
-    <Dropdown onClick={(e) => console.info(e)}>
-        <Option>
-            <a href="#dropdowns">Slack</a>
-        </Option>
-        <Option>
+    <Dropdown
+        // primary
+        onSelect={(e) => console.info(e.target.value)}>
+        <Option value="slug">
             <a href="#dropdowns">a</a>
+        </Option>
+        <Option value="oider">
+            <a href="#dropdowns">b</a>
         </Option>
     </Dropdown>
 );

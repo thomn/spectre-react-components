@@ -1,21 +1,34 @@
+const table = (bool, number, string, array, object) => ({
+    [Boolean]: bool,
+    [Number]: number,
+    [String]: string,
+    [Array]: array,
+    [Object]: object,
+});
+
+const operations = table(
+    (value) => value,
+    (value) => value,
+    (value) => value,
+    (value) => useClassName(...value),
+    (value) => Object.keys(value).filter(key => useClassName(value[key])),
+);
+
+const execute = (value) => (
+    (operations[value.constructor] || (() => value))(value)
+);
+
 /**
  *
  * @param entries
  * @returns {string}
  */
-const composer = (...entries) => (
-    entries
-        .filter(Boolean)
-        .map((value) => ({
-            [Boolean]: () => value,
-            [Number]: () => value,
-            [String]: () => value,
-            [Array]: () => composer(...value),
-            [Object]: () => Object.keys(value).filter(key => composer(value[key])),
-        })[value.constructor](value))
-        .flat()
-        .join(' ')
-        .trim()
+const useClassName = (...entries) => (entries
+    .filter(Boolean)
+    .map(execute)
+    .flat()
+    .join(' ')
+    .trim()
 );
 
 /**
@@ -23,4 +36,4 @@ const composer = (...entries) => (
  * Date: 07.09.2019
  * Time: 21:59
  */
-export default composer;
+export default useClassName;

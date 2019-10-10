@@ -11,7 +11,7 @@ import Icon from './Icon';
 const Accordion = factory({
     type: 'div',
     className: 'accordion',
-    wrap: (children, {exclusive}) => {
+    render: ({children, exclusive}) => {
         const type = useClassName({
             checkbox: (!exclusive),
             radio: (exclusive),
@@ -40,7 +40,7 @@ Accordion.propTypes = {
 export const Header = factory({
     type: 'label',
     className: 'accordion-header',
-    wrap: (children, {caret}) => (
+    render: ({children, caret}) => (
         <Fragment>
             {(caret) && (
                 <Icon type={Icon.Type.ARROW_RIGHT}/>
