@@ -30,6 +30,10 @@ const extract = (input) => {
             if (head === 'index.js') {
                 const name = tail.slice(-1);
                 output[name] = entry;
+            } else {
+                let name = tail.slice(-1).pop();
+                name = basename(name, '.js');
+                output[name] = entry;
             }
 
             continue;

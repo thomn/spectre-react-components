@@ -11,7 +11,7 @@ const Avatar = factory({
     style: ({size}) => ({
         [`avatar-${size}`]: (size),
     }),
-    rewire: ({initials}) => ({
+    extend: ({initials}) => ({
         'data-initial': initials,
     }),
 });

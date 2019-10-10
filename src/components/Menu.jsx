@@ -20,7 +20,7 @@ const Menu = factory({
 export const Divider = factory({
     type: 'li',
     className: 'divider',
-    rewire: ({children}) => ({
+    extend: ({children}) => ({
         'data-content': children,
     }),
     render: () => null
