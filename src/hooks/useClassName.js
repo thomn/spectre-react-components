@@ -14,6 +14,10 @@ const operations = table(
     (value) => Object.keys(value).filter(key => useClassName(value[key])),
 );
 
+const execute = (value) => (
+    (operations[value.constructor] || (() => value))(value)
+);
+
 /**
  *
  * @param entries
@@ -21,7 +25,7 @@ const operations = table(
  */
 const useClassName = (...entries) => (entries
     .filter(Boolean)
-    .map((value) => (operations[value.constructor] || (() => value))(value))
+    .map(execute)
     .flat()
     .join(' ')
     .trim()
