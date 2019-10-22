@@ -1,5 +1,5 @@
 import Button from './Button';
-import factory from 'factory';
+import factory from 'nean/factory';
 import {every} from 'utils';
 import {bool} from 'propTypes';
 

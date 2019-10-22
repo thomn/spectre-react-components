@@ -1,5 +1,5 @@
 import React, {cloneElement, Children} from 'react';
-import factory from 'factory';
+import factory from 'nean/factory';
 import {string} from 'propTypes';
 import Menu, {Item} from './Menu';
 import Button from './Button';

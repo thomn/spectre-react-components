@@ -1,1 +1,0 @@
-import"react";import{f as factory}from"./vendor.js";import{bool}from"prop-types";var Columns=factory({type:"div",className:"columns",style:a=>{var{gapless:b,oneline:c}=a;return{"col-gapless":b,"col-oneline":c}}});Columns.propTypes={gapless:bool,oneline:bool};export default Columns;

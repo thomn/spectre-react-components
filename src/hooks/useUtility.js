@@ -1,13 +1,14 @@
-import useClassName from './useClassName';
+import hook from 'nean/hook'
+import {useClassName} from 'nean/hooks';
 
 /**
  *
  * @param props
  * @returns {*}
  */
-const useUtility = (...props) => ({className}) => ({
+const useUtility = hook((...props) => ({className}) => ({
     className: useClassName(className, ...props),
-});
+}));
 
 export const Text = {
     PRIMARY: 'text-primary',

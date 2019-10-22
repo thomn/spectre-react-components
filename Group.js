@@ -1,1 +1,0 @@
-import"react";import{f as factory}from"./vendor.js";import{bool}from"prop-types";import Button from"./Button.js";var every=(a,b)=>a.every(a=>{var{type:c}=a;return b===c}),Group=factory({type:"div",style:a=>{var{children:b,block:c}=a;return{block:c,"btn-group":every(b,Button)}}});Group.propTypes={block:bool};export default Group;

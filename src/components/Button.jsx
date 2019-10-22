@@ -1,6 +1,6 @@
-import factory from 'factory';
-import {oneOfOption, bool} from 'propTypes';
 import React from 'react';
+import factory from 'nean/factory';
+import {oneOfOption, bool} from 'propTypes';
 
 /**
  *

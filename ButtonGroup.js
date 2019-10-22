@@ -1,1 +1,0 @@
-import"react";import{f as factory}from"./vendor.js";import{bool}from"prop-types";var ButtonGroup=factory({type:"div",className:"btn-group",style:a=>{var{block:b}=a;return{"btn-group-block":b}}});ButtonGroup.propTypes={block:bool};export default ButtonGroup;
