@@ -1,5 +1,4 @@
-import hook from 'nean/hook'
-import {useClassName} from 'nean/hooks';
+import {hook, useClassName} from 'nean';
 
 export const Size = {
     LARGE: 'lg',
@@ -10,7 +9,7 @@ export const Size = {
  * Date: 02.10.2019
  * Time: 14:33
  */
-export default hook((loading, size) => ({className}) => ({
+export default (loading, size) => hook('loading', ({className}) => ({
     className: useClassName(className, {
         loading,
         [`loading-${size}`]: (size),

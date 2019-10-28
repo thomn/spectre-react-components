@@ -1,5 +1,5 @@
 import React from 'react';
-import factory from 'nean/factory';
+import {factory} from 'nean';
 import {oneOfOption, bool} from 'propTypes';
 
 /**

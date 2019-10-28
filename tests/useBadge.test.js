@@ -1,14 +1,24 @@
-const tape = require('tape');
-const {default: useBadge} = require('../src/hooks/useBadge');
+import tape from 'tape';
+import prepare from './prepare';
+import {useBadge} from '../src/hooks';
 
 tape('test useBadge', ({plan, equal}) => {
+    const builder = prepare();
+    const factory = builder({
+        type: 'div',
+    });
+
     const props = {
-        foo: true,
+        children: 'child',
+        use: [
+            useBadge('123'),
+        ],
     };
 
-    const expect = 'foo badge';
-    const actual = useBadge('12');
+    const element = factory(props);
 
-    plan(1);
-    equal(expect, actual);
+    plan(3);
+    equal(element.props.className, 'badge');
+    equal(element.props.children, 'child');
+    equal(element.props['data-badge'], '123');
 });
