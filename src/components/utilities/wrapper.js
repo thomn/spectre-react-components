@@ -6,5 +6,7 @@ import {createElement} from 'react';
  * Time: 00:10
  */
 export default ({condition, component, children, props}) => (
-    condition ? createElement(component, {children, ...props}) : children
+    condition
+        ? createElement(component, {children, ...props})
+        : children
 );
