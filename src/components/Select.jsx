@@ -8,7 +8,7 @@ import {bool, string, arrayOf, oneOfOption} from 'propTypes';
  * @type {*}
  */
 const Select = factory({
-    render: ({options, selected, multiple, ..._rest}) => {
+    render: ({options, selected, size, multiple, ..._rest}) => {
         const className = useClassName('form-select', {
             [`select-${size}`]: (size),
         });

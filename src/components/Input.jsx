@@ -14,8 +14,8 @@ const {Switch, Case} = switched();
  * @type {any}
  */
 const WithIcon = factory({
-    render: ({children, use}) => {
-        const icon = intercept(use)('icon');
+    render: ({children, icon, use}) => {
+
         const left = icon(Side.LEFT, {
             className: 'form-icon',
         });
@@ -44,8 +44,10 @@ const WithIcon = factory({
  * @type {*}
  */
 const Input = factory({
-    render: ({children, use, size, ..._rest}) => {
-        const className = useClassName('form-input', {
+    render: ({children, className, use, size, ..._rest}) => {
+        const icon = intercept(use)('icon');
+
+        className = useClassName('form-input', {
             [`input-${size}`]: (size),
         });
 
@@ -58,9 +60,9 @@ const Input = factory({
                 )}
 
                 <Wrapper
-                    condition={false}
+                    condition={icon('display')}
                     component={WithIcon}
-                    props={{use}}
+                    props={{icon, use}}
                 >
                     <input
                         {..._rest}
