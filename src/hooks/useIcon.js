@@ -13,6 +13,10 @@ export const Side = {
  * Time: 00:36
  */
 export default (type, side = Side.RIGHT) => hook('icon', (current, props) => {
+    if (current === 'display') {
+        return true;
+    }
+
     if (current !== side) {
         return null;
     }
