@@ -15,7 +15,6 @@ const {Switch, Case} = switched();
  */
 const WithIcon = factory({
     render: ({children, icon, use}) => {
-
         const left = icon(Side.LEFT, {
             className: 'form-icon',
         });
@@ -41,11 +40,24 @@ const WithIcon = factory({
 
 /**
  *
+ * @type {any}
+ */
+export const Addon = factory({
+    type: 'span',
+    className: 'input-group-addon',
+    style: ({size}) => ({
+        ['input-' + size]: (size),
+    }),
+});
+
+/**
+ *
  * @type {*}
  */
 const Input = factory({
     render: ({children, className, use, size, ..._rest}) => {
         const icon = intercept(use)('icon');
+        const addon = intercept(use)('addon');
 
         className = useClassName('form-input', {
             [`input-${size}`]: (size),
@@ -59,6 +71,8 @@ const Input = factory({
                     </label>
                 )}
 
+                {addon(Side.LEFT)}
+
                 <Wrapper
                     condition={icon('display')}
                     component={WithIcon}
@@ -69,8 +83,9 @@ const Input = factory({
                         className={className}
                     />
                 </Wrapper>
-            </Group>
 
+                {addon(Side.RIGHT)}
+            </Group>
         );
     },
 });
