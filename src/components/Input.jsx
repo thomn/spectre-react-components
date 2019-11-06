@@ -1,13 +1,10 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {factory, intercept, useClassName} from 'nean';
 import Group from './Group';
 import {oneOfOption} from '../propTypes';
 import {Side} from '../hooks/useIcon';
 
-import switched from './utilities/switched';
 import Wrapper from './utilities/wrapper';
-
-const {Switch, Case} = switched();
 
 /**
  *
@@ -36,18 +33,6 @@ const WithIcon = factory({
             </div>
         );
     },
-});
-
-/**
- *
- * @type {any}
- */
-export const Addon = factory({
-    type: 'span',
-    className: 'input-group-addon',
-    style: ({size}) => ({
-        ['input-' + size]: (size),
-    }),
 });
 
 /**

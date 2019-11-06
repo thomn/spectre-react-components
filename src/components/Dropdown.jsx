@@ -1,4 +1,4 @@
-import React, {cloneElement, Children} from 'react';
+import React from 'react';
 import {oneOfType, string, shape, arrayOf, number, any} from 'propTypes';
 import {factory} from 'nean';
 import Menu, {Item} from './Menu';

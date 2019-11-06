@@ -1,7 +1,7 @@
 import {factory} from 'nean';
 import {bool} from 'propTypes';
 import Button from './Button';
-import {Addon} from './Input';
+import Addon from './Addon';
 
 import {every, some} from 'utils';
 

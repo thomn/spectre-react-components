@@ -1,6 +1,6 @@
 import React from 'react';
 import {hook} from 'nean';
-import {Addon} from '../components/Input';
+import Addon from '../components/Addon';
 
 export const Side = {
     RIGHT: 'right',
