@@ -48,6 +48,7 @@ export {default as Subscript}     from 'components/Subscript';
 export {default as Superscript}   from 'components/Superscript';
 export {default as Switch}        from 'components/Switch';
 export {default as Table}         from 'components/Table';
+export {default as Tabs}          from 'components/Tabs';
 export {default as Textarea}      from 'components/Textarea';
 export {default as Tile}          from 'components/Tile';
 export {default as Time}          from 'components/Time';
