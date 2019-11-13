@@ -1,5 +1,5 @@
-import factory from 'factory';
-import {string} from 'propTypes';
+import {factory} from 'nean';
+import {bool} from 'propTypes';
 
 /**
  *
@@ -7,11 +7,17 @@ import {string} from 'propTypes';
  */
 const Image = factory({
     type: 'img',
-    className: 'img-responsive',
+    style: ({responsive, fit, contain}) => ({
+        'img-responsive': (responsive),
+        'img-fit': (fit),
+        'img-contain': (contain),
+    }),
 });
 
 Image.propTypes = {
-    src: string.isRequired,
+    responsive: bool,
+    fit: bool,
+    contain: bool,
 };
 
 /**

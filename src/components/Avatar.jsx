@@ -1,4 +1,4 @@
-import factory from 'factory';
+import {factory} from 'nean';
 import {oneOfOption,  string} from 'propTypes';
 
 /**

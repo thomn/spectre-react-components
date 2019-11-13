@@ -1,4 +1,4 @@
-import {bool, oneOf, string, func, object} from 'prop-types';
+import {bool, oneOf, string, func, object, shape, oneOfType, arrayOf, any, number} from 'prop-types';
 
 /**
  *
@@ -23,4 +23,9 @@ export {
     string,
     func,
     object,
+    shape,
+    oneOfType,
+    arrayOf,
+    any,
+    number,
 };

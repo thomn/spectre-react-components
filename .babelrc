@@ -11,8 +11,7 @@
           "components": "./src/components",
           "hooks": "./src/hooks",
           "utils": "./src/utils.js",
-          "propTypes": "./src/propTypes.js",
-          "factory": "./src/factory.js"
+          "propTypes": "./src/propTypes.js"
         }
       }
     ]

@@ -1,7 +1,9 @@
-import Button from './Button';
-import factory from 'factory';
-import {every} from 'utils';
+import {factory} from 'nean';
 import {bool} from 'propTypes';
+import Button from './Button';
+import Addon from './Addon';
+
+import {every, some} from 'utils';
 
 /**
  *
@@ -11,7 +13,9 @@ const Group = factory({
     type: 'div',
     style: ({children, block}) => ({
         block,
+        'input-group': some(children, [Addon]),
         'btn-group': every(children, Button),
+        'form-group': some(children, ['label', 'input', 'select', 'textarea']),
     }),
 });
 

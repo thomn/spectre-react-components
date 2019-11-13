@@ -4,3 +4,5 @@ temp
 package-lock.json
 
 .idea
+
+/*.js

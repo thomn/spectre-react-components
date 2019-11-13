@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react';
-import {useClassName} from '../hooks';
-import factory from 'factory';
+import {factory, useClassName} from 'nean';
 import {bool} from 'propTypes';
 import Icon from './Icon';
 

@@ -1,1 +1,0 @@
-import"react";import{f as factory}from"./vendor.js";import{string}from"prop-types";var Image=factory({type:"img",className:"img-responsive"});Image.propTypes={src:string.isRequired};export default Image;

@@ -1,1 +1,0 @@
-import"react";import{f as factory,o as oneOfOption}from"./vendor.js";import{bool}from"prop-types";var Chip=factory({type:"div",className:"chip",style:a=>{var{size:b,active:c}=a;return{["chip-".concat(b)]:b,active:c}}});Chip.Size={SMALL:"sm"},Chip.propTypes={active:bool,size:oneOfOption(Chip.Size)};export default Chip;
