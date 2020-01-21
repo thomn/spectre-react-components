@@ -9,8 +9,8 @@ const Columns = factory({
     type: 'div',
     className: 'columns',
     style: ({gapless, oneline}) => ({
-        'col-gapless': gapless,
-        'col-oneline': oneline,
+        'col-gapless': (gapless),
+        'col-oneline': (oneline),
     }),
 });
 

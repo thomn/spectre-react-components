@@ -24,7 +24,7 @@ export default [{
     manualChunks: {
         'vendor': [
             'node_modules/nean/lib/index.js',
-        ]
+        ],
     },
     external: [
         'react',
@@ -39,7 +39,7 @@ export default [{
             extensions: ['.js', '.jsx'],
         }),
         cleanup({
-            comments: 'none'
+            comments: 'none',
         }),
     ],
 }];

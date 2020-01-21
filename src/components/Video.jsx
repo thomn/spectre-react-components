@@ -1,5 +1,5 @@
 import React from 'react';
-import {factory, useClassName, useType} from 'nean';
+import {factory, useType} from 'nean';
 import {bool} from 'propTypes';
 
 /**
@@ -20,23 +20,21 @@ const Element = factory({
  * @type {*}
  */
 const Video = factory({
-    render: ({src, ..._rest}) => {
-
-        if (src) {
+    render: ({iframe, ..._rest}) => {
+        if (!iframe) {
             return (
-                <Element
-                    {..._rest}
-                    src={src}
-                />
+                <Element {..._rest}/>
             );
         }
 
         return (
             <Element
                 use={[
-                    useType('b'),
+                    useType('div'),
                 ]}
-            />
+            >
+                <iframe {..._rest}/>
+            </Element>
         );
     },
 });
@@ -45,6 +43,7 @@ Video.propTypes = {
     responsive: bool,
     fourByThree: bool,
     oneByOne: bool,
+    iframe: bool,
 };
 
 /**

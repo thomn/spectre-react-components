@@ -1,88 +1,82 @@
-import React from 'react';
-import {oneOfType, string, shape, arrayOf, number, any} from 'propTypes';
-import {factory} from 'nean';
-import Menu, {Item} from './Menu';
+import React, {Children, cloneElement} from 'react';
+import {factory, intercept} from 'nean';
+import {bool, string} from '../propTypes';
 import Button from './Button';
-// import {useUtility} from '../hooks';
-// import {Text} from '../hooks/useUtility';
+import Menu, {Item} from './Menu';
+import {Side} from '../hooks/useIcon';
 
 /**
  *
- * @type {any}
+ * @type {*}
  */
-const Dropdown = factory({
+const Element = factory({
     type: 'div',
     className: 'dropdown',
-    render: ({children, options, selected, onSelect, primary}) => {
-        const entries = [];
-
-        /**
-         *
-         * @param e
-         * @param value
-         */
-        const onClick = (e, value) => {
-            e.target.value = value;
-
-            onSelect && onSelect(e);
-        };
-
-        for (const option of options) {
-            const {label = option, value = option} = option;
-
-            const entry = (
-                <Option
-                    key={label}
-                    value={value}
-                    onClick={(e) => onClick(e, value)}
-                >
-                    {label}
-                </Option>
-            );
-            entries.push(entry);
-        }
-
-        return (
-            <>
-                <Button
-                    className="dropdown-toggle"
-                    primary={primary}
-                >
-                    {children}
-                </Button>
-                <Menu>
-                    {entries}
-                </Menu>
-            </>
-        );
-    },
+    style: ({right}) => ({
+        'dropdown-right': (right),
+    }),
 });
 
+/**
+ *
+ * @type {*}
+ */
+export const Option = Item;
+
+/**
+ *
+ * @type {*}
+ */
+const Dropdown = ({children, label, primary, use, onSelect, ..._rest}) => {
+    const icon = intercept(use)('icon');
+
+    /**
+     *
+     * @param e
+     * @param value
+     */
+    const onClick = (e, value) => {
+        e.target.value = value;
+
+        onSelect && onSelect(e);
+    };
+
+    if (onSelect) {
+        children = Children.map(children, (child) => {
+            return cloneElement(child, {
+                onClick,
+            });
+        });
+    }
+
+    return (
+        <Element
+            {..._rest}
+        >
+            <Button
+                className="dropdown-toggle"
+                primary={primary}
+            >
+                {icon(Side.LEFT)} {label} {icon(Side.RIGHT)}
+            </Button>
+
+            <Menu>
+                {children}
+            </Menu>
+        </Element>
+    );
+};
+
 Dropdown.propTypes = {
-    options: oneOfType([
-        arrayOf(string),
-        arrayOf(shape({
-            label: oneOfType([string, number]),
-            value: any,
-        })),
-    ]),
+    right: bool,
+    button: bool,
+    primary: bool,
+    label: string,
 };
 
 /**
- *
- * @type {any}
- */
-const Option = factory({
-    render: ({children, onClick}) => (
-        <Item onClick={onClick}>
-            <a>{children}</a>
-        </Item>
-    ),
-});
-
-/**
  * User: Oleg Kamlowski <oleg.kamlowski@thomann.de>
- * Date: 24.10.2019
- * Time: 22:28
+ * Date: 21.01.2020
+ * Time: 22:12
  */
-export default Dropdown;
+export default Element;

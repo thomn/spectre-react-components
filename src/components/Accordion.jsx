@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {factory, useClassName} from 'nean';
+import {factory} from 'nean';
 import {bool} from 'propTypes';
 import Icon from './Icon';
 
@@ -11,10 +11,10 @@ const Accordion = factory({
     type: 'div',
     className: 'accordion',
     render: ({children, exclusive}) => {
-        const type = useClassName({
+        const type = {
             checkbox: (!exclusive),
             radio: (exclusive),
-        });
+        }[exclusive];
 
         return (
             <Fragment>
@@ -61,9 +61,6 @@ export const Body = factory({
     type: 'div',
     className: 'accordion-body',
 });
-
-Accordion.Header = Header;
-Accordion.Body = Body;
 
 /**
  * User: Oleg Kamlowski <oleg.kamlowski@thomann.de>

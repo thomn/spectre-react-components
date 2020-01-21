@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import {factory} from 'nean';
 import {bool, func} from 'propTypes';
 import Button from './Button';
-import {useUtility} from '../hooks';
+import useUtility from '../hooks/useUtility';
 
 const {Position} = useUtility;
 

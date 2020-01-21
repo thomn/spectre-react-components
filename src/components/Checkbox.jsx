@@ -1,6 +1,6 @@
 import React, {createRef, useEffect} from 'react';
 import {factory, useClassName} from 'nean';
-import {bool} from 'propTypes';
+import {bool, string} from 'propTypes';
 import Group from './Group';
 
 /**
@@ -8,18 +8,18 @@ import Group from './Group';
  * @type {*}
  */
 const Checkbox = factory({
-    render: ({children, indeterminate, inline, ..._rest}) => {
+    render: ({label, indeterminate, inline, success, error, disabled, ..._rest}) => {
+        const ref = createRef();
         const className = useClassName('form-checkbox', {
+            disabled,
             'form-inline': (inline),
+            'is-success': (success),
+            'is-error': (error),
         });
 
-        const ref = createRef();
-
         useEffect(() => {
-            if (indeterminate) {
-                ref.current.indeterminate = true;
-            }
-        }, []);
+            ref.current.indeterminate = (indeterminate === true);
+        }, [indeterminate]);
 
         return (
             <Group>
@@ -29,7 +29,7 @@ const Checkbox = factory({
                         type="checkbox"
                         ref={ref}
                     />
-                    <i className="form-icon"/> {children}
+                    <i className="form-icon"/> {label}
                 </label>
             </Group>
         );
@@ -37,8 +37,12 @@ const Checkbox = factory({
 });
 
 Checkbox.propTypes = {
+    label: string,
     indeterminate: bool,
     inline: bool,
+    success: bool,
+    error: bool,
+    disabled: bool,
 };
 
 /**

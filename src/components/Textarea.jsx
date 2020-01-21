@@ -1,16 +1,18 @@
 import React from 'react';
 import {factory, useClassName} from 'nean';
 import Group from './Group';
-import {oneOfOption} from '../propTypes';
+import {bool} from '../propTypes';
 
 /**
  *
  * @type {*}
  */
 const Textarea = factory({
-    render: ({children, ..._rest}) => {
+    render: ({children, success, error, disabled, ..._rest}) => {
         const className = useClassName('form-input', {
-            [`input-${size}`]: (size),
+            disabled,
+            'is-success': (success),
+            'is-error': (error),
         });
 
         return (
@@ -27,13 +29,10 @@ const Textarea = factory({
     },
 });
 
-Textarea.Size = {
-    SMALL: 'sm',
-    LARGE: 'lg',
-};
-
 Textarea.propTypes = {
-    size: oneOfOption(Textarea.Size),
+    success: bool,
+    error: bool,
+    disabled: bool,
 };
 
 /**

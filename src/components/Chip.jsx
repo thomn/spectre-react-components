@@ -9,8 +9,8 @@ const Chip = factory({
     type: 'div',
     className: 'chip',
     style: ({size, active}) => ({
-        [`chip-${size}`]: (size),
         active,
+        [`chip-${size}`]: (size),
     }),
 });
 

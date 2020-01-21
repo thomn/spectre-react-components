@@ -9,7 +9,7 @@ export const Size = {
  * Date: 02.10.2019
  * Time: 14:33
  */
-export default (loading, size) => hook('loading', ({className}) => ({
+export default (loading, size) => hook('loading', ({className} = {}) => ({
     className: useClassName(className, {
         loading,
         [`loading-${size}`]: (size),

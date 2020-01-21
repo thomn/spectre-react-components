@@ -8,19 +8,12 @@ import {bool, string, arrayOf, oneOfOption} from 'propTypes';
  * @type {*}
  */
 const Select = factory({
-    render: ({options, selected, size, multiple, ..._rest}) => {
+    render: ({children, selected, size, multiple, success, error, ..._rest}) => {
         const className = useClassName('form-select', {
             [`select-${size}`]: (size),
+            'is-success': (success),
+            'is-error': (error),
         });
-
-        const wrapped = options.map(option => (
-            <option
-                key={option}
-                selected={option === selected}
-            >
-                {option}
-            </option>
-        ));
 
         return (
             <Group>
@@ -29,7 +22,7 @@ const Select = factory({
                     className={className}
                     multiple={multiple === true}
                 >
-                    {wrapped}
+                    {children}
                 </select>
             </Group>
         );
@@ -44,8 +37,27 @@ Select.Size = {
 Select.propTypes = {
     selected: string,
     multiple: bool,
+    success: bool,
+    error: bool,
     options: arrayOf(string),
     size: oneOfOption(Select.Size),
+};
+
+/**
+ *
+ * @type {*}
+ */
+export const Option = factory({
+    render: ({children, ..._rest}) => (
+        <option {..._rest}>
+            {children}
+        </option>
+    ),
+});
+
+Option.propTypes = {
+    selected: bool,
+    disabled: bool,
 };
 
 /**

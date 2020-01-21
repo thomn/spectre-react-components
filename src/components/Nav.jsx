@@ -1,12 +1,13 @@
 import {factory} from 'nean';
+import {bool} from '../propTypes';
 
 /**
  *
  * @type {*}
  */
-const Breadcrumb = factory({
+const Nav = factory({
     type: 'ul',
-    className: 'breadcrumb',
+    className: 'nav',
 });
 
 /**
@@ -15,14 +16,16 @@ const Breadcrumb = factory({
  */
 export const Item = factory({
     type: 'li',
-    className: 'breadcrumb-item',
+    className: 'nav-item',
 });
 
-Breadcrumb.Item = Item;
+Item.propTypes = {
+    active: bool,
+};
 
 /**
  * User: Oleg Kamlowski <oleg.kamlowski@thomann.de>
- * Date: 20.08.2019
- * Time: 10:02
+ * Date: 21.01.2020
+ * Time: 22:24
  */
-export default Breadcrumb;
+export default Nav;

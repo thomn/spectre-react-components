@@ -9,7 +9,7 @@ import {oneOfOption, bool} from 'propTypes';
 const Button = factory({
     type: 'button',
     className: 'btn',
-    style: ({active, disabled, clear, size, primary, success, error, action, link}) => ({
+    style: ({active, disabled, clear, size, primary, success, error, action, link, circle}) => ({
         active,
         disabled,
         [`btn-${size}`]: (size),
@@ -19,6 +19,7 @@ const Button = factory({
         'btn-error': (error),
         'btn-action': (action),
         'btn-link': (link),
+        's-circle': (circle),
     }),
 });
 
@@ -37,6 +38,7 @@ Button.propTypes = {
     error: bool,
     action: bool,
     link: bool,
+    circle: bool,
     size: oneOfOption(Button.Size),
 };
 

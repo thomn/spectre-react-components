@@ -4,18 +4,9 @@ import {factory} from 'nean';
  *
  * @type {*}
  */
-const Card = factory({
+const Panel = factory({
     type: 'div',
-    className: 'card',
-});
-
-/**
- *
- * @type {*}
- */
-export const Image = factory({
-    type: 'div',
-    className: 'card-image',
+    className: 'panel',
 });
 
 /**
@@ -24,7 +15,7 @@ export const Image = factory({
  */
 export const Header = factory({
     type: 'div',
-    className: 'card-header',
+    className: 'panel-header',
 });
 
 /**
@@ -33,16 +24,16 @@ export const Header = factory({
  */
 export const Title = factory({
     type: 'div',
-    className: 'card-title',
+    className: 'panel-title',
 });
 
 /**
  *
  * @type {*}
  */
-export const SubTitle = factory({
+export const Nav = factory({
     type: 'div',
-    className: 'card-subtitle',
+    className: 'panel-nav',
 });
 
 /**
@@ -51,7 +42,7 @@ export const SubTitle = factory({
  */
 export const Body = factory({
     type: 'div',
-    className: 'card-body',
+    className: 'panel-body',
 });
 
 /**
@@ -60,12 +51,12 @@ export const Body = factory({
  */
 export const Footer = factory({
     type: 'div',
-    className: 'card-footer',
+    className: 'panel-footer',
 });
 
 /**
  * User: Oleg Kamlowski <oleg.kamlowski@thomann.de>
- * Date: 26.09.2019
- * Time: 19:22
+ * Date: 21.01.2020
+ * Time: 22:35
  */
-export default Card;
+export default Panel;

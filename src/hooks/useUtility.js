@@ -5,7 +5,7 @@ import {hook, useClassName} from 'nean';
  * @param props
  * @returns {*}
  */
-const useUtility = (...props) => hook('utility', ({className}) => ({
+const useUtility = (...props) => hook('utility', ({className} = {}) => ({
     className: useClassName(className, ...props),
 }));
 

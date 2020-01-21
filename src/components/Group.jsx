@@ -11,16 +11,20 @@ import {every, some} from 'utils';
  */
 const Group = factory({
     type: 'div',
-    style: ({children, block}) => ({
+    style: ({children, block, success, error}) => ({
         block,
+        'has-success': (success),
+        'has-error': (error),
         'input-group': some(children, [Addon]),
         'btn-group': every(children, Button),
-        'form-group': some(children, ['label', 'input', 'select', 'textarea']),
+        'form-group': some(children, ['label', 'input', 'select', 'textarea', 'div']),
     }),
 });
 
 Group.propTypes = {
     block: bool,
+    success: bool,
+    error : bool,
 };
 
 /**

@@ -57,12 +57,6 @@ export const Action = factory({
     className: 'tile-action',
 });
 
-Tile.Icon = Icon;
-Tile.Title = Title;
-Tile.SubTitle = SubTitle;
-Tile.Content = Content;
-Tile.Action = Action;
-
 /**
  * User: Oleg Kamlowski <oleg.kamlowski@thomann.de>
  * Date: 04.06.2019

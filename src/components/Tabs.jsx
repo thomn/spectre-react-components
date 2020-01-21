@@ -1,7 +1,7 @@
-import {factory} from 'nean';
-import {bool, func} from 'propTypes';
-import React, {Fragment} from 'react';
-import Button from './Button';
+import React from 'react';
+import {factory, useClassName} from 'nean';
+import Link from './Link';
+import {func, bool} from '../propTypes';
 
 /**
  *
@@ -19,35 +19,31 @@ Tabs.propTypes = {
     block: bool,
 };
 
-export const Tab = factory({
-    type: 'li',
-    className: 'tab-item',
-    style: ({active}) => ({
-        active,
-    }),
-    render: ({children, onClose}) => {
-        if (!onClose) {
-            return children;
-        }
+
+/**
+ *
+ * @type {*}
+ */
+export const Item = factory({
+    render: ({className, children, active, onClose, ..._rest}) => {
+        className = useClassName('tab-item', className, {
+            active,
+        });
 
         return (
-            <Fragment>
-                {children}
-                <Button
-                    clear
-                    onClick={onClose}
-                />
-            </Fragment>
+            <li className={className}>
+                <Link {..._rest}>
+                    {children}
+                </Link>
+            </li>
         );
     },
 });
 
-Tab.propTypes = {
+Item.propTypes = {
     active: bool,
     onClose: func,
 };
-
-Tabs.Tab = Tab;
 
 /**
  * User: Oleg Kamlowski <oleg.kamlowski@thomann.de>

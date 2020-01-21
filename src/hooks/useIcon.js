@@ -1,5 +1,5 @@
 import React from 'react';
-import {hook, useClassName} from 'nean';
+import {hook} from 'nean';
 import Icon from '../components/Icon';
 
 export const Side = {

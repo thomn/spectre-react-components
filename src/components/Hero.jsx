@@ -32,8 +32,6 @@ export const Body = factory({
     className: 'hero-body',
 });
 
-Hero.Body = Body;
-
 /**
  * User: Oleg Kamlowski <oleg.kamlowski@thomann.de>
  * Date: 30.09.2019

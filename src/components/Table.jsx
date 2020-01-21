@@ -87,11 +87,6 @@ export const Column = factory({
     },
 });
 
-Table.Head = Head;
-Table.Body = Body;
-Table.Row = Row;
-Table.Column = Column;
-
 /**
  * User: Oleg Kamlowski <oleg.kamlowski@thomann.de>
  * Date: 28.10.2019

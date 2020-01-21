@@ -1,5 +1,5 @@
 import {factory} from 'nean';
-import {oneOfOption,  string} from 'propTypes';
+import {oneOfOption, string} from 'propTypes';
 
 /**
  *
@@ -48,8 +48,6 @@ Presence.Presence = {
 Presence.propTypes = {
     presence: oneOfOption(Presence.Presence),
 };
-
-Avatar.Presence = Presence;
 
 /**
  * User: Oleg Kamlowski <oleg.kamlowski@thomann.de>

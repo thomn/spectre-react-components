@@ -8,8 +8,10 @@ import {oneOfOption} from 'propTypes';
 const Container = factory({
     type: 'div',
     className: 'container',
-    style: ({size}) => ({
+    style: ({size, hide, show}) => ({
         [`grid-${size}`]: (size),
+        [`hide-${hide}`]: (hide),
+        [`show-${show}`]: (show),
     }),
 });
 
@@ -23,6 +25,8 @@ Container.Size = {
 
 Container.propTypes = {
     size: oneOfOption(Container.Size),
+    hide: oneOfOption(Container.Size),
+    show: oneOfOption(Container.Size),
 };
 
 /**

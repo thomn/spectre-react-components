@@ -1,7 +1,7 @@
 import React from 'react';
 import {factory, intercept, useClassName} from 'nean';
 import Group from './Group';
-import {oneOfOption} from '../propTypes';
+import {oneOfOption, bool} from '../propTypes';
 import {Side} from '../hooks/useIcon';
 
 import Wrapper from './utilities/wrapper';
@@ -11,7 +11,7 @@ import Wrapper from './utilities/wrapper';
  * @type {any}
  */
 const WithIcon = factory({
-    render: ({children, icon, use}) => {
+    render: ({children, icon}) => {
         const left = icon(Side.LEFT, {
             className: 'form-icon',
         });
@@ -40,12 +40,15 @@ const WithIcon = factory({
  * @type {*}
  */
 const Input = factory({
-    render: ({children, className, use, size, ..._rest}) => {
+    render: ({children, className, use, size, success, error, disabled, ..._rest}) => {
         const icon = intercept(use)('icon');
         const addon = intercept(use)('addon');
 
         className = useClassName('form-input', {
+            disabled,
             [`input-${size}`]: (size),
+            'is-success': (success),
+            'is-error': (error),
         });
 
         return (
@@ -82,6 +85,9 @@ Input.Size = {
 
 Input.propTypes = {
     size: oneOfOption(Input.Size),
+    error: bool,
+    success: bool,
+    disabled: bool,
 };
 
 /**

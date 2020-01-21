@@ -48,10 +48,6 @@ export const Badge = factory({
     className: 'menu-badge',
 });
 
-Menu.Item = Item;
-Menu.Badge = Badge;
-Menu.Divider = Divider;
-
 /**
  * User: Oleg Kamlowski <oleg.kamlowski@thomann.de>
  * Date: 04.06.2019

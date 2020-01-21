@@ -11,7 +11,7 @@ export const Side = {
  * Date: 25.09.2019
  * Time: 11:18
  */
-export default (tooltip, side = null) => hook('tooltip', ({className}) => ({
+export default (tooltip, side = null) => hook('tooltip', ({className} = {}) => ({
     className: useClassName(className, 'tooltip', {
         ['tooltip-' + side]: (side),
     }),
