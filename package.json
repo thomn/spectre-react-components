@@ -1,6 +1,6 @@
 {
   "name": "@thomann/spectre-react-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "react components for spectre.css",
   "main": "index.js",
   "scripts": {
