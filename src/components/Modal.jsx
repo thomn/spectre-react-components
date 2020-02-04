@@ -1,33 +1,11 @@
-import React from 'react';
-import {factory} from 'nean';
+import React, {Fragment} from 'react';
+import {factory, useClassName} from 'nean';
 import Button from './Button';
 import Link from './Link';
 import {oneOfOption} from '../propTypes';
 import useUtility from '../hooks/useUtility';
 
 const {Position} = useUtility;
-
-/**
- *
- * @type {*}
- */
-const Modal = ({children, ..._rest}) => (
-    <Element {..._rest}>
-        <Overlay/>
-        <Container>
-            {children}
-        </Container>
-    </Element>
-);
-
-Modal.Size = {
-    SMALL: 'sm',
-    LARGE: 'lg',
-};
-
-Modal.propTypes = {
-    size: oneOfOption(Modal.Size),
-};
 
 /**
  *
@@ -42,15 +20,24 @@ const Element = factory({
     }),
 });
 
+Element.Size = {
+    SMALL: 'sm',
+    LARGE: 'lg',
+};
+
+Element.propTypes = {
+    size: oneOfOption(Element.Size),
+};
+
 /**
  *
  * @type {*}
  */
 export const Overlay = factory({
-    render: ({children, href}) => (
+    render: ({children, ..._rest}) => (
         <Link
             className="modal-overlay"
-            href={href}
+            {..._rest}
         >
             {children}
         </Link>
@@ -71,22 +58,27 @@ export const Container = factory({
  * @type {*}
  */
 export const Header = factory({
-    type: 'div',
-    className: 'modal-header',
-    render: ({children, title, onClose}) => (
-        <>
-            <Button
-                clear
-                onClick={() => onClose && onClose()}
-                use={[
-                    useUtility(Position.FLOAT_RIGHT),
-                ]}
-            />
-            {children}
+    render: ({children, className, title, onClose, ..._rest}) => {
+        className = useClassName('modal-header', className);
 
-            <div className="modal-title h5">{title}</div>
-        </>
-    ),
+        return (
+            <div
+                className={className}
+                {..._rest}
+            >
+                <Button
+                    clear
+                    onClick={() => onClose && onClose()}
+                    use={[
+                        useUtility(Position.FLOAT_RIGHT),
+                    ]}
+                />
+                {children}
+
+                <div className="modal-title h5">{title}</div>
+            </div>
+        );
+    },
 });
 
 /**
@@ -96,8 +88,11 @@ export const Header = factory({
 export const Body = factory({
     type: 'div',
     className: 'modal-body',
-    render: ({children}) => (
-        <div className="content">
+    render: ({children, ..._rest}) => (
+        <div
+            className="content"
+            {..._rest}
+        >
             {children}
         </div>
     ),

@@ -1,5 +1,5 @@
-import React, {Fragment} from 'react';
-import {factory} from 'nean';
+import React from 'react';
+import {factory, useClassName} from 'nean';
 import {bool, func} from 'propTypes';
 import Button from './Button';
 import useUtility from '../hooks/useUtility';
@@ -11,28 +11,26 @@ const {Position} = useUtility;
  * @type {*}
  */
 const Toast = factory({
-    type: 'div',
-    className: 'toast',
-    style: ({primary, success, warning, error}) => ({
-        'toast-primary': (primary),
-        'toast-success': (success),
-        'toast-warning': (warning),
-        'toast-error': (error),
-    }),
-    render: ({children, onClose}) => {
-        if (!onClose) {
-            return children;
-        }
+    render: ({children, className, onClose, primary, success, warning, error, ..._rest}) => {
+        className = useClassName('toast', {
+            'toast-primary': (primary),
+            'toast-success': (success),
+            'toast-warning': (warning),
+            'toast-error': (error),
+        });
 
         return (
-            <Fragment>
+            <div
+                className={className}
+                {..._rest}
+            >
                 {children}
-                <Button
+                {onClose && (<Button
                     clear
                     className={Position.FLOAT_RIGHT}
                     onClick={onClose}
-                />
-            </Fragment>
+                />)}
+            </div>
         );
     },
 });

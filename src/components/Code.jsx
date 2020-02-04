@@ -8,12 +8,13 @@ import {bool, string} from 'propTypes';
  * @type {any}
  */
 const Multiline = factory({
-    render: ({children, lang}) => {
+    render: ({children, lang, ..._rest}) => {
         const data = {'data-lang': lang};
 
         return (
             <pre
                 className="code"
+                {..._rest}
                 {...data}
             >
                 {children}

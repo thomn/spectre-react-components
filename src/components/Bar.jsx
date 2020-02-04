@@ -1,5 +1,5 @@
 import React from 'react';
-import {factory, useClassName} from 'nean';
+import {factory} from 'nean';
 import {number} from '../propTypes'
 
 /**

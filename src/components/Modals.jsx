@@ -33,9 +33,9 @@ const Modals = factory({
          * @param key
          */
         const hide = (key) => {
-            setModals((modals) => {
-                return modals.filter(modal => modal.key !== key);
-            });
+            setModals((modals) => (
+                modals.filter(modal => modal.key !== key)
+            ));
         };
 
         const value = {
@@ -43,14 +43,15 @@ const Modals = factory({
             hide
         };
 
-        const render = () => {
-            return modals.map(({key, modal: Modal, props}) => (
+        const render = () => (
+            modals.map(({key, modal: Modal, props}) => (
                 <Modal
                     key={key}
+                    onClose={() => hide(key)}
                     {...props}
                 />
-            ));
-        };
+            ))
+        );
 
         return (
             <Provider

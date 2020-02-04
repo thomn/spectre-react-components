@@ -17,9 +17,11 @@ const Textarea = factory({
 
         return (
             <Group>
-                <label className="form-label">
-                    {children}
-                </label>
+                {(children) && (
+                    <label className="form-label">
+                        {children}
+                    </label>
+                )}
                 <textarea
                     {..._rest}
                     className={className}
