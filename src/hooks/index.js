@@ -11,3 +11,4 @@ export * as useTooltip from './useTooltip';
 export * as useModal   from './useModal';
 export * as useUtility from './useUtility';
 export {useClassName as useClassName} from 'nean'
+export {useType as useType} from 'nean'

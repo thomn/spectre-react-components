@@ -10,10 +10,20 @@ export default (modal, props) => {
     const key = useMemo(() => Date.now(), []);
     const {show, hide} = useContext(Context);
 
-    const showModal = () => {
-        show(key, modal, props);
+    /**
+     *
+     * @param data
+     */
+    const showModal = (data) => {
+        show(key, modal, {
+            ...props,
+            ...data,
+        });
     };
 
+    /**
+     *
+     */
     const hideModal = () => {
         hide(key);
     };
