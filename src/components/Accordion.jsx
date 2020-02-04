@@ -12,8 +12,8 @@ const Accordion = factory({
     className: 'accordion',
     render: ({children, exclusive}) => {
         const type = {
-            checkbox: (!exclusive),
-            radio: (exclusive),
+            [exclusive]: 'checkbox',
+            [!exclusive]: 'radio',
         }[exclusive];
 
         return (

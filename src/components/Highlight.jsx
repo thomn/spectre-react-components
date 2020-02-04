@@ -4,8 +4,8 @@ import {factory} from 'nean';
  *
  * @type {*}
  */
-const Insert = factory({
-    type: 'ins',
+const Highlight = factory({
+    type: 'mark',
 });
 
 /**
@@ -13,4 +13,4 @@ const Insert = factory({
  * Date: 28.10.2019
  * Time: 20:15
  */
-export default Insert;
+export default Highlight;
