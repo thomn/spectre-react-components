@@ -1,6 +1,6 @@
 import React, {createContext, useContext} from 'react';
 import {factory, useType} from 'nean';
-import {bool} from 'propTypes';
+import {bool} from '../propTypes';
 
 const Context = createContext(false);
 const {Provider} = Context;

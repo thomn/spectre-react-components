@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {factory, useClassName} from 'nean';
 import Button from './Button';
 import Link from './Link';

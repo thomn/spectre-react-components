@@ -1,7 +1,7 @@
 import React from 'react';
 import {factory} from 'nean';
 import Wrapper from './utilities/wrapper';
-import {bool, string} from 'propTypes';
+import {bool, string} from '../propTypes';
 
 /**
  *

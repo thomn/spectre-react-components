@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import {factory} from 'nean';
-import {bool} from 'propTypes';
+import {bool} from '../propTypes';
 import Icon from './Icon';
 
 /**

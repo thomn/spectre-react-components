@@ -1,5 +1,5 @@
 import {factory} from 'nean';
-import {bool} from 'propTypes';
+import {bool} from '../propTypes';
 import Button from './Button';
 import Addon from './Addon';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {factory, useClassName} from 'nean';
-import {string} from 'propTypes';
+import {string} from '../propTypes';
 
 /**
  *

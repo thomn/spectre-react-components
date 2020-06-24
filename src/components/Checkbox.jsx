@@ -1,6 +1,6 @@
 import React, {createRef, useEffect} from 'react';
 import {factory, useClassName} from 'nean';
-import {bool, string} from 'propTypes';
+import {bool, string} from '../propTypes';
 import Group from './Group';
 
 /**

@@ -1,5 +1,4 @@
 import {factory} from 'nean';
-import {bool} from '../propTypes';
 
 /**
  *

@@ -1,5 +1,5 @@
 import {factory, useType} from 'nean';
-import {bool} from 'propTypes';
+import {bool} from '../propTypes';
 
 /**
  *

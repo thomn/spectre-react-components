@@ -1,7 +1,7 @@
 import React from 'react';
 import {factory, intercept, useClassName} from 'nean';
-import Group from './Group';
 import {oneOfOption, bool} from '../propTypes';
+import Group from './Group';
 import {Side} from '../hooks/useIcon';
 
 import Wrapper from './utilities/wrapper';

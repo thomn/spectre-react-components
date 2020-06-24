@@ -1,6 +1,6 @@
 import React from 'react';
 import {factory, useClassName} from 'nean';
-import {bool, func} from 'propTypes';
+import {bool, func} from '../propTypes';
 import Button from './Button';
 import useUtility from '../hooks/useUtility';
 

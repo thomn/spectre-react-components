@@ -2,7 +2,7 @@ import React from 'react';
 import {factory, useClassName, useType} from 'nean';
 import Link from './Link';
 import Button from './Button';
-import {bool} from 'propTypes';
+import {bool} from '../propTypes';
 
 /**
  *

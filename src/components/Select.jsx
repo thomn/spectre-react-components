@@ -1,7 +1,7 @@
 import React from 'react';
 import {factory, useClassName} from 'nean';
 import Group from './Group';
-import {bool, string, arrayOf, oneOfOption} from 'propTypes';
+import {bool, string, arrayOf, oneOfOption} from '../propTypes';
 
 /**
  *
