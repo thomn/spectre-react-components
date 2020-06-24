@@ -70,9 +70,9 @@
  - [ ] Carousels
  - [ ] Comparison sliders
  - [ ] Filters
- - [ ] Meters
+ - [x] Meters
  - [x] Off-Canvas
  - [ ] Parallax
  - [ ] Progress 
  - [ ] Sliders
- - [ ] Timelines 
+ - [x] Timelines 
