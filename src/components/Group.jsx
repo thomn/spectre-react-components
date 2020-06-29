@@ -12,11 +12,11 @@ import {every, some} from 'utils';
 const Group = factory({
     type: 'div',
     style: ({children, block, success, error}) => ({
-        block,
         'has-success': (success),
         'has-error': (error),
         'input-group': some(children, [Addon]),
         'btn-group': every(children, Button),
+        'btn-group-block': block && every(children, Button),
         'form-group': some(children, ['label', 'input', 'select', 'textarea', 'div']),
     }),
 });
